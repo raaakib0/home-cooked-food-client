@@ -1,9 +1,12 @@
 import React from 'react';
+import Banner from './Banner';
+import Carousel from './Carousel';
 
 const Home = () => {
     return (
-        <div>
-            <h2>This is Home</h2>
+        <div >
+            <Banner></Banner>
+            <Carousel></Carousel>
         </div>
     );
 };
