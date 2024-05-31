@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -31,7 +32,7 @@ const Navbar = () => {
     return (
         <div className="navbar  dark:bg-base-100 bg-blue-200">
             <div className="flex-1">
-                <a className="btn btn-ghost text-xl">Home Cooked Food</a>
+                <a className="btn btn-ghost text-xl"><Link to="/" >Home Cooked Food</Link></a>
             </div>
 
             {/* <div className="navbar bg-base-100"> */}
@@ -70,7 +71,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                <Link to="/login" className=" btn btn-primary btn-sm mr-2" >Login</Link> 
                 </div>
             {/* </div> */}
             
