@@ -1,46 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-
+import { authContext } from '../../Context/AuthProvider';
 
 const SignUp = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const { createUser } = useContext(authContext);
 
-    const handleSignUp = event => {
-        event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
+    const handleSignUp = (data) => {
 
-        // createUser(email, password)
-        //     .then(result => {
-        //         const user = result.user;
-        //         // console.log(user.email);
-        //         navigate(from, { replace: true })
-        //         // toast.success('User Created Successfully.');
-        //         {
-        //             <div className="toast toast-top toast-center">
-        //                 <div className="alert alert-success">
-        //                     <span>Message sent successfully.</span>
-        //                 </div>
-        //             </div>;
-        //         }
-        //         setAuthToken(user);
-        //         // console.log(name);
-        //         const userInfo = {
-        //             displayName: name
-        //         }
-        //         saveUser(name, email, role2);
-        //     })
-        //     .catch(error => {
-        //         // console.log(error)
-        //         setSignUPError(error.message)
-        //     });
+        const name = data.name;
+        const email = data.email;
+        const password = data.password;
+
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                // console.log(user.email);
+                // navigate(from, { replace: true })
+                // toast.success('User Created Successfully.');
+                {
+                    <div className="toast toast-top toast-center">
+                        <div className="alert alert-success">
+                            <span>Message sent successfully.</span>
+                        </div>
+                    </div>;
+                }
+                // setAuthToken(user);
+                // console.log(name);
+                const userInfo = {
+                    displayName: name
+                }
+                // saveUser(name, email);
+            })
+            .catch(error => {
+                // console.log(error)
+                // setSignUPError(error.message)
+            });
     }
-    
+
     return (
         <div className="hero w-full my-20">
             <Helmet>
@@ -71,7 +71,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" {...register("password", { minLength: 5 },{ required: "password is required" })} name='password' placeholder="password" className="input input-bordered" required />
+                            <input type="password" {...register("password", { minLength: { value: 6, message: "Password must be 6 character" } }, { required: "password is required" })} name='password' placeholder="password" className="input input-bordered" required />
                             {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                         </div>
                         <div className="form-control">

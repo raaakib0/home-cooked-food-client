@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import img from '../../assets/images/icon.png';
+import img2 from '../../assets/images/login/rakib.jpg';
+
 
 const Navbar = () => {
 
@@ -32,7 +35,8 @@ const Navbar = () => {
     return (
         <div className="navbar  dark:bg-base-100 bg-blue-200">
             <div className="flex-1">
-                <a className="btn btn-ghost text-xl"><Link to="/" >Home Cooked Food</Link></a>
+                <img className='w-1/2' src={img} alt="" />
+                <a className="btn btn-ghost text-xl" ><Link to="/" >Home Cooked Food</Link></a>
             </div>
 
             {/* <div className="navbar bg-base-100"> */}
@@ -103,7 +107,7 @@ const Navbar = () => {
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            <img alt="Tailwind CSS Navbar component" src={img2} />
                         </div>
                     </div>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
