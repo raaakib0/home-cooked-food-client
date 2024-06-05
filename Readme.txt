@@ -10,11 +10,12 @@ dark moad implement to navebar
 login page crate and linked
 login form validation and firebase connection
 add Helemt
-add firebase login system
+add firebase sign Up system
+add login system
 
 
 Featured
 Dark Moad
 Helemt
 Form Validation
-valid login system
+valid signUp & login system

@@ -18,9 +18,6 @@ const SignUp = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                // console.log(user.email);
-                // navigate(from, { replace: true })
-                // toast.success('User Created Successfully.');
                 {
                     <div className="toast toast-top toast-center">
                         <div className="alert alert-success">
@@ -28,16 +25,12 @@ const SignUp = () => {
                         </div>
                     </div>;
                 }
-                // setAuthToken(user);
-                // console.log(name);
                 const userInfo = {
                     displayName: name
                 }
-                // saveUser(name, email);
             })
             .catch(error => {
-                // console.log(error)
-                // setSignUPError(error.message)
+                console.log(error)
             });
     }
 
@@ -75,21 +68,9 @@ const SignUp = () => {
                             {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                         </div>
                         <div className="form-control">
-                            {/* <label className="cursor-pointer label">
-                                <span className="label-text">Request for Seller</span>
-                                <input type="checkbox" name="checkbox" className="checkbox checkbox-info" />
-                            </label> */}
-
-                            {/* {signUpError && <p className='text-red-600'>{signUpError == "Firebase: Error (auth/user-not-found)." ? "User Not Found" : ""}</p>}
-                            {signUpError && <p className='text-red-600'>{signUpError == "Firebase: Error (auth/invalid-email)." ? "Invalid Email" : ""}</p>}
-                            {signUpError && <p className='text-red-600'>{signUpError == "Firebase: Error (auth/wrong-password)." ? "Wrong Password" : ""}</p>}
-                            {signUpError && <p className='text-red-600'>{signUpError == "Firebase: Password should be at least 6 characters (auth/weak-password)." ? "Weak password enter at least 6 characters" : ""}</p>}
-                            {signUpError && <p className='text-red-600'>{signUpError == "Firebase: Error (auth/email-already-in-use)." ? "Email already in use" : ""}</p>} */}
-                            {/* {signUpError && <p className='text-red-600'>{signUpError}</p>} */}
 
                         </div>
                         <div className="form-control mt-6">
-                            {/* {signUpError && <p className='text-red-600'>{signUpError}</p>} */}
                             <input className="btn btn-primary" type="submit" value="Sign Up" />
                         </div>
                     </form>
