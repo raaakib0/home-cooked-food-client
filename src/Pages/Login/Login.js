@@ -1,22 +1,28 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { authContext } from '../../Context/AuthProvider';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm()
     const { signIn } = useContext(authContext);
+    const [logInError, setLogInError] = useState('');
 
     const handleLogin = (data) => {
         console.log(data)
+        setLogInError('');
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user)
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+                console.log(error.message);
+                setLogInError(error.message);
+            });
     }
+    console.log(logInError)
 
     return (
         <div className="hero w-full my-20 bg-blue-200 dark:bg-base-200">
@@ -46,6 +52,11 @@ const Login = () => {
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
+                        </div>
+                        <div>
+                            {
+                                logInError && <p className='text-red-600'>{logInError}</p>
+                            }
                         </div>
                         <div className="form-control mt-6">
                             <input className="btn btn-primary" type="submit" value="Login" />
