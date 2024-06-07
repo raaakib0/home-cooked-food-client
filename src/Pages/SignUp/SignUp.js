@@ -1,36 +1,45 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { authContext } from '../../Context/AuthProvider';
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser } = useContext(authContext);
+    const { createUser, updateUser } = useContext(authContext);
+    const [signUpError, SetSignUpError] = useState('');
 
     const handleSignUp = (data) => {
 
         const name = data.name;
         const email = data.email;
         const password = data.password;
+        console.log(data)
+
+        SetSignUpError('');
 
         createUser(email, password)
             .then(result => {
                 const user = result.user;
+                console.log(user);
                 {
-                    <div className="toast toast-top toast-center">
-                        <div className="alert alert-success">
-                            <span>Message sent successfully.</span>
-                        </div>
-                    </div>;
+                    toast.success('Sign Up Successfully')
                 }
                 const userInfo = {
-                    displayName: name
+                    displayName: name,
+                    photoURL:'',
                 }
+                updateUser(userInfo)
+                    .then(() => { })
+                .catch((err)=>{console.log(err)})
             })
             .catch(error => {
-                console.log(error)
+                {
+                    SetSignUpError(error.message);
+                    console.log(error)
+                }
             });
     }
 
@@ -67,9 +76,12 @@ const SignUp = () => {
                             <input type="password" {...register("password", { minLength: { value: 6, message: "Password must be 6 character" } }, { required: "password is required" })} name='password' placeholder="password" className="input input-bordered" required />
                             {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                         </div>
-                        <div className="form-control">
+                        {/* <div className="form-control">
 
-                        </div>
+                        </div> */}
+                        {
+                            signUpError && <p className='text-red-600' >{signUpError} </p>
+                        }
                         <div className="form-control mt-6">
                             <input className="btn btn-primary" type="submit" value="Sign Up" />
                         </div>
