@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from './Banner';
 import Carousel from './Carousel';
 import { Helmet } from 'react-helmet';
+import ItemCard from './ItemCard';
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
                 <title>Home | HCF</title>
             </Helmet>
             <Banner></Banner>
+            <ItemCard></ItemCard>
             <Carousel></Carousel>
         </div>
     );

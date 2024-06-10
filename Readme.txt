@@ -15,8 +15,10 @@ add login system
 implement signout option
 set react hot toast
 private routes 
+navigate location
 replace location when he/she login and locate current page
-
+connect to mongodb server
+dinamic card loaded
 
 Featured
 ====================
@@ -25,4 +27,4 @@ Helemt
 Form Validation
 valid signUp & login system
 Toast
-private dashboard and location replace
+private dashboard and navigate location
