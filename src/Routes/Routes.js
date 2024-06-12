@@ -5,6 +5,8 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "../Pages/Dashboard/DashboardLayout";
+import AllUser from "../Pages/Dashboard/AllUser";
 
 const router = createBrowserRouter([
     {
@@ -23,12 +25,24 @@ const router = createBrowserRouter([
                 path: '/signup',
                 element: <SignUp></SignUp>
             },
-            {
-                path: '/dashboard',
-                element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute>
-            }
+            
         ]
     },
+
+    {
+        path: '/dashboard',
+        element: <PrivateRoute> <DashboardLayout></DashboardLayout> </PrivateRoute>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <Dashboard></Dashboard> 
+            },
+            {
+                path: 'dashboard/allUser',
+                element: <AllUser></AllUser>
+            }
+        ]
+    }
    
     
 ]);

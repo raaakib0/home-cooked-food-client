@@ -19,6 +19,7 @@ navigate location
 replace location when he/she login and locate current page
 connect to mongodb server
 dinamic card loaded
+install npm i @tanstack/react-query
 
 Featured
 ====================

@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import IndividualItemCard from './IndividualItemCard';
+import { useQuery } from '@tanstack/react-query';
 
 
 
 const ItemCard = () => {
 
-    const [cookedItem, setCookedItem] = useState([])
+    // const [cookedItem, setCookedItem] = useState([])
 
-    useEffect(() => {
-        fetch('http://localhost:5000/itemCategories')
+    const { data: cookedItem=[],isLoading } = useQuery({
+        queryKey: ['itemCategories'],
+        queryFn: () => fetch('http://localhost:5000/itemCategories')
             .then(res => res.json())
-            .then(data => setCookedItem(data))
-    }, [])
+    })
+
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/itemCategories')
+    //         .then(res => res.json())
+    //         .then(data => setCookedItem(data))
+    // }, [])
 
 
     return (
