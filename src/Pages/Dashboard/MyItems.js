@@ -1,9 +1,9 @@
 import React from 'react';
 
-const AllUser = () => {
+const MyItems = () => {
     return (
         <div className="overflow-x-auto">
-            <h1>All Users</h1>
+            <h1>My Items</h1>
             <table className="table">
                 {/* head */}
                 <thead>
@@ -157,4 +157,4 @@ const AllUser = () => {
     );
 };
 
-export default AllUser;
+export default MyItems;

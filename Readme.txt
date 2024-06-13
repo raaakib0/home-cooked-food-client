@@ -20,6 +20,8 @@ replace location when he/she login and locate current page
 connect to mongodb server
 dinamic card loaded
 install npm i @tanstack/react-query
+create admin dashboard
+Use Material UI Chart
 
 Featured
 ====================
@@ -29,3 +31,5 @@ Form Validation
 valid signUp & login system
 Toast
 private dashboard and navigate location
+admin dashboard
+MUI Chart

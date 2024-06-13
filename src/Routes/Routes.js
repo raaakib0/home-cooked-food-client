@@ -7,6 +7,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../Pages/Dashboard/DashboardLayout";
 import AllUser from "../Pages/Dashboard/AllUser";
+import MyItems from "../Pages/Dashboard/MyItems";
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <Dashboard></Dashboard> 
+            },
+            {
+                path: 'dashboard/myItems',
+                element: <MyItems></MyItems>
             },
             {
                 path: 'dashboard/allUser',
