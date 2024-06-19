@@ -8,12 +8,12 @@ const ItemCard = () => {
 
     // const [cookedItem, setCookedItem] = useState([])
 
-    const { data: cookedItem=[],isLoading } = useQuery({
-        queryKey: ['itemCategories'],
-        queryFn: () => fetch('http://localhost:5000/itemCategories')
+    const { data: cookedItem = [], isLoading } = useQuery({
+        queryKey: ['allItem'],
+        queryFn: () => fetch('http://localhost:5000/allItem')
             .then(res => res.json())
     })
-
+    console.log(cookedItem);
     // useEffect(() => {
     //     fetch('http://localhost:5000/itemCategories')
     //         .then(res => res.json())
