@@ -23,6 +23,8 @@ install npm i @tanstack/react-query
 create admin dashboard
 Use Material UI Chart
 My items CRUD In Dadshboard
+Comment page add and load data from database
+
 
 Featured
 ====================

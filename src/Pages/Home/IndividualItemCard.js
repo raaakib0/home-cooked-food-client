@@ -1,7 +1,12 @@
 import React from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const IndividualItemCard = (items) => {
     const { name, img, description } = items.items;
+    // const items = useLoaderData();
+    function loader() {
+        return items;
+    }
     // console.log(items)
     return (
         < div className="card card-compact w-96 bg-base-100 shadow-xl" >
@@ -13,7 +18,7 @@ const IndividualItemCard = (items) => {
                 </h2>
                 <p>{description}</p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Details</button>
+                    <Link to={'/ItemDetails'} ><button className="btn btn-primary">Details</button></Link>
                 </div>
             </div>
 

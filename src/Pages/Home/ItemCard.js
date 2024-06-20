@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import IndividualItemCard from './IndividualItemCard';
 import { useQuery } from '@tanstack/react-query';
+import { useLoaderData } from 'react-router-dom';
 
 
 
 const ItemCard = () => {
-
+    
     // const [cookedItem, setCookedItem] = useState([])
 
     const { data: cookedItem = [], isLoading } = useQuery({
