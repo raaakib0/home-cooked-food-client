@@ -9,6 +9,7 @@ import DashboardLayout from "../Pages/Dashboard/DashboardLayout";
 import AllUser from "../Pages/Dashboard/AllUser";
 import MyItems from "../Pages/Dashboard/MyItems";
 import ItemDetails from "../Pages/ItemDetails/ItemDetails";
+import AddNewItem from "../Pages/Dashboard/AddNewItem";
 
 const router = createBrowserRouter([
     {
@@ -30,7 +31,8 @@ const router = createBrowserRouter([
             {
                 path: '/ItemDetails',
                 element: <ItemDetails></ItemDetails>
-            }
+            },
+            
             
         ]
     },
@@ -50,6 +52,10 @@ const router = createBrowserRouter([
             {
                 path: 'dashboard/allUser',
                 element: <AllUser></AllUser>
+            },
+            {
+                path: 'dashboard/addNewItem',
+                element: <AddNewItem></AddNewItem>
             }
         ]
     }
