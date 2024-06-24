@@ -24,7 +24,9 @@ create admin dashboard
 Use Material UI Chart
 My items CRUD In Dadshboard
 Comment page add and load data from database
-
+Add New Item Option implement using post method
+user commets successfully
+comment reverse and new comment show in top
 
 Featured
 ====================
@@ -35,4 +37,6 @@ valid signUp & login system
 Toast
 private dashboard and navigate location
 admin dashboard
+add new items
 MUI Chart
+user comment

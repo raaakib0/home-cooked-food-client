@@ -24,7 +24,7 @@ const AddNewItem = () => {
     //     }
     // })
 
-    const handleAddVehicle = data => {
+    const handleAddDish = data => {
        
         // const image = data.image[0];
         // const formData = new FormData();
@@ -74,7 +74,7 @@ const AddNewItem = () => {
     return (
         <div className='w-96 p-7'>
             <h2 className="text-4xl flex justify-center">Add New Items</h2>
-            <form onSubmit={handleSubmit(handleAddVehicle)}>
+            <form onSubmit={handleSubmit(handleAddDish)}>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Name</span></label>
                     <input type="text" {...register("name", {

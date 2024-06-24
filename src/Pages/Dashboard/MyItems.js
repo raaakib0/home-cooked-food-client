@@ -28,6 +28,7 @@ const MyItems = () => {
                                 <input type="checkbox" className="checkbox" />
                             </label>
                         </th>
+                        <th>SL</th>
                         <th>Name</th>
                         <th>Job</th>
                         <th>Favorite Color</th>
@@ -43,6 +44,9 @@ const MyItems = () => {
                                         <input type="checkbox" className="checkbox" />
                                     </label>
                                 </th>
+                                <td>
+                                    <h3>{i + 1}</h3>
+                                </td>
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">
