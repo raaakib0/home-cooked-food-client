@@ -27,6 +27,7 @@ Comment page add and load data from database
 Add New Item Option implement using post method
 user commets successfully
 comment reverse and new comment show in top
+delete comment successfully
 
 Featured
 ====================
