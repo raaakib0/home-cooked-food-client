@@ -1,7 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
+import Loading from '../Shared/Loading';
+import toast from 'react-hot-toast';
+import ConfirmationModal from '../Shared/ConfirmationModal';
 
 const MyItems = () => {
+    const [deletingItem, setDeletingItem] = useState(null);
+    
+    const closeModal = () => {
+        setDeletingItem(null);
+    }
 
     // const { data: MyItem = [], isLoading } = useQuery({
     //     queryKey: ['allItem'],
@@ -9,12 +17,35 @@ const MyItems = () => {
     //         .then(res => res.json())
     // })
 
-    const { data: myCookedItems = [], isLoading } = useQuery({
+    const { data: myCookedItems = [], isLoading, refetch } = useQuery({
         queryKey: ['allItem'],
         queryFn: () => fetch('http://localhost:5000/allItem')
             .then(res => res.json())
     })
     console.log(myCookedItems);
+
+
+    // Delete Comment
+
+    const handleDeleteItems = Items => {
+        // console.log(comment)
+        fetch(`http://localhost:5000/allItem/${Items._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`${Items.name} deleted successfully`)
+                }
+            })
+    }
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
     return (
         <div className="overflow-x-auto">
@@ -65,7 +96,9 @@ const MyItems = () => {
                                     <br />
                                     <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
                                 </td>
-                                <td>Purple</td>
+                                <th>
+                                    <label onClick={() => setDeletingItem(Items)} htmlFor="confirmation-modal" className="btn btn-xs btn-error">Delete</label>
+                                </th>
                                 <th>
                                     <button className="btn btn-ghost btn-xs">details</button>
                                 </th>
@@ -74,6 +107,18 @@ const MyItems = () => {
                 </tbody>
 
             </table>
+            {
+                deletingItem &&
+                <ConfirmationModal
+                    title={`Are you sure you want to delete?`}
+                    message={`If you delete ${deletingItem.name}. It cannot be undone.`}
+                    successAction={handleDeleteItems}
+                    successButtonName="Delete"
+                    modalData={deletingItem}
+                    closeModal={closeModal}
+                >
+                </ConfirmationModal>
+            }
         </div>
     );
 };

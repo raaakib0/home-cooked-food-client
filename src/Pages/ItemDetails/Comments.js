@@ -5,11 +5,13 @@ import { authContext } from '../../Context/AuthProvider';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import ConfirmationModal from '../Shared/ConfirmationModal';
+import Loading from '../Shared/Loading';
+import EditComment from './EditComment';
 
 
 const Comments = () => {
     const [deletingComment, setDeletingComment] = useState(null);
-    
+
     const closeModal = () => {
         setDeletingComment(null);
     }
@@ -23,7 +25,6 @@ const Comments = () => {
     const { user } = useContext(authContext);
 
     const handleAddComment = data => {
-
         const comment = {
             name: data.name,
             email: user.email,
@@ -40,14 +41,12 @@ const Comments = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
+                // console.log(result);
                 toast.success(`${data.comments} is added successfully`);
                 refetch();
             })
     }
 
-    // const userCom = userComment.reverse();
-    // console.log(userCom);
 
     // Delete Comment
 
@@ -67,7 +66,9 @@ const Comments = () => {
                 }
             })
     }
-
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
         <div className='flex justify-center '>
             <div className="overflow-x-auto">
@@ -90,7 +91,7 @@ const Comments = () => {
                                         <div className="flex item-center gap-3">
                                             <div className="avatar">
                                                 <div className="mask mask-squircle w-12 h-12">
-                                                    <img src={comment.img} alt="Avatar Tailwind CSS Component" />
+                                                    <img src={comment.img} alt="Avatar" />
                                                 </div>
                                             </div>
                                             <div>
@@ -105,6 +106,11 @@ const Comments = () => {
                                         <span className="badge badge-ghost badge-sm">{comment.email}</span>
                                     </td>
                                     <td>{comment.review}</td>
+                                    <th>
+                                        <EditComment comment={comment.comments} id={comment._id}>
+                                            <button className="btn btn-xs btn-primary">Edit</button>
+                                        </EditComment>
+                                    </th>
                                     {/* if user email = comment email => show delet button */}
                                     <th>
                                         <label onClick={() => setDeletingComment(comment)} htmlFor="confirmation-modal" className="btn btn-xs btn-error">Delete</label>
@@ -128,11 +134,13 @@ const Comments = () => {
             </div>
             {/* Comment Box */}
             <div className='w-96 p-7'>
+
                 <h2 className="text-4xl flex justify-center">Comment Box</h2>
+
                 <form onSubmit={handleSubmit(handleAddComment)}>
                     <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Write your Coomments</span>
+                        <label className="label justify-center">
+                            <span className="label-text">Write your Comments</span>
                         </label>
                         <textarea type="text" {...register("comments", {
                             required: "comments is Required"
@@ -141,6 +149,7 @@ const Comments = () => {
                     </div>
                     <input className='btn btn-accent w-full mt-4' value="Send" type="submit" />
                 </form>
+
             </div>
         </div>
     );
