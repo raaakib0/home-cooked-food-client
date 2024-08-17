@@ -96,11 +96,12 @@ const MyItems = () => {
                                     <br />
                                     <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
                                 </td>
-                                <th>
-                                    <label onClick={() => setDeletingItem(Items)} htmlFor="confirmation-modal" className="btn btn-xs btn-error">Delete</label>
-                                </th>
+                                
                                 <th>
                                     <button className="btn btn-ghost btn-xs">details</button>
+                                </th>
+                                <th>
+                                    <label onClick={() => setDeletingItem(Items)} htmlFor="confirmation-modal" className="btn btn-xs btn-error">Delete</label>
                                 </th>
                             </tr>
                         )}

@@ -28,6 +28,9 @@ Add New Item Option implement using post method
 user commets successfully
 comment reverse and new comment show in top
 delete comment successfully
+delete item from dashboard successfully
+add user in server
+user list add in dashboard
 
 Featured
 ====================
@@ -41,3 +44,5 @@ admin dashboard
 add new items
 MUI Chart
 user comment
+delete item
+user list

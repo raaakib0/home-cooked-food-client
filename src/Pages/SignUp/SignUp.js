@@ -41,6 +41,23 @@ const SignUp = () => {
                     console.log(error)
                 }
             });
+        
+        // add user in server
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                // console.log(result);
+                toast.success(`${data.name} is added successfully`);
+                // refetch();
+            })
     }
 
     return (
